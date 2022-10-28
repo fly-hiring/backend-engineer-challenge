@@ -22,7 +22,7 @@ To solve this, we want to build our own usage data and generate invoices in real
 
 In this project, we're going to build part of this new invoicing system.
 
-## Part 1: Invoice modeling
+## Your Piece
 
 This project comes with a [basic invoice model setup](link me), but it's incomplete. We want you to build out the model for an invoice as well as the invoice items (line items) in an invoice. (TODO: add note that they can use our billing page for the models). Then, we want you to show us how you would sync invoices to Stripe.
 
