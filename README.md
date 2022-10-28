@@ -1,6 +1,6 @@
 # Backend Work Sample
 
-Hello! This is a hiring project for our [Platform Engineer position](TODO).
+Hello! This is a hiring project for our [Backend Engineer position](TODO).
 If you apply, we’ll ask you to do this project so we can see how you work through a contrived (yet shockingly accurate) example of the type of things you’d do at Fly.io.
 
 # The Job
@@ -13,29 +13,22 @@ Fly.io is comprised of a few layers.
 The layer we care about for Backend is ironically pretty close our Users.
 We care about the APIs, interfaces that touch the APIs, and the data we store to create good user experiences.
 
-One core piece to that layer is `web`.
-It's a Rails app that that does a lot of stuff:
+One core piece to that layer is `web`, a lovely Rails app that:
 
-* Serves our GraphQL API
-* Manages much of our centralized job processing
-* Stores our global account data like Organizations, Users
-* Syncs data from our platform to provide strong, encompassing user experiences to our UIs
-* Syncs data to Stripe to bill our users
+* Syncs usage data from the Fly.io platform so we can give developers insight into their platform usage. This is stuff like reserved CPU, memory usage over time, data in/out, and more. 
+* Serves the GraphQL API that powers `flyctl`, the command line tool developers use to interact with the platform.
+* Models our global account data with concepts like `Organizations` and `Users`.
+* Syncs data to Stripe, our payment processor, so we can bill developers for their usage.
 
-Today, we rely heavily on Stripe by syncing usage data to Stripe that they then bill for us.
-We sync so aggressively that we sometimes fail to sync.
-The strategy of pushing usage data to Stripe also removes some control, reduces our ability to provide better experiences for our users.
+Our current process for billing developers looks like this: we sync usage data from a variety of sources to Stripe, which generates an invoice based on Stripe's knowledge of our products and pricing. The challenge is that we bill for a whole lot of things in tiny increments, so we need to sync usage data to Stripe all the time. We sync so aggressively that we sometimes fail to sync at all, which means we can't tell our users how much they owe. The strategy of pushing usage data to Stripe reduces our ability to provide a good developer experience.
 
-We will be changing our strategy to build our own usage data at invoice-time.
-Once those invoices are generated we'll sync the invoice, rather than usage, to Stripe and use that to bill customers.
+To solve this, we want to build our own usage data and generate invoices in real-time. Once invoices are generated, we can sync the invoice, rather than the usage, to Stripe and use that to bill our customers.
 
-In this project, we're going to work on some of the Invoice piece.
+In this project, we're going to build part of this invoicing system and take control of the user experience.
 
 ## Part 1: Invoice modeling
 
-This project has a basic Invoice model setup, but it's incomplete.
-We want you to build out the model we'd use for the Invoice Items (line items) in an invoice.
-You might notice there are some things missing on the Invoice model, please add them.
+This project comes with a [basic Invoice model setup](link me), but it's incomplete. We want you to build out the model we'd use for the Invoice Items (line items) in an invoice.
 
 ### Critieria
 
@@ -43,7 +36,8 @@ You might notice there are some things missing on the Invoice model, please add 
 * Do the Rails relationships make sense
 * Since we don't have a presentation layer for this, illustrate your model tests
   - What's the total for an invoice?
-* Don’t spend time making this perfect. Rough edges are fine if it helps you move quickly. It’s okay to skip the last 20% to make it production ready, but you should know what that 20% is and explain it in the `NOTES.md`.
+
+Don’t spend time making this perfect. Rough edges are fine if it helps you move quickly. It’s okay to skip the last 20% to make it production ready, but you should know what that 20% is and explain it in the `NOTES.md`.
 
 ## Part 2: Stripe Sync
 
