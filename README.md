@@ -11,7 +11,7 @@ As a Backend Engineer at Fly.io, you’ll be working on the interfaces around ou
 
 At the center of our backend infrastructure is `web`, a lovely Rails app that:
 
-* Syncs usage data from the Fly.io platform so we can give developers insight into their platform usage. This is stuff like reserved CPU, memory usage over time, data in/out, and more. 
+* Syncs usage data from the Fly.io platform so we can give developers insight into their platform usage. This is stuff like reserved CPU, memory usage over time, data in/out, and more.
 * Models our global account data with concepts like `Organizations` and `Users`.
 * Syncs data to Stripe, our payment processor, so we can bill developers for their usage.
 * Serves the GraphQL API that powers `flyctl`, the command line tool developers use to interact with the platform (you don't need to know this for the work sample, but it's kinda cool).
@@ -24,9 +24,17 @@ In this project, we're going to build part of this new invoicing system.
 
 ## Your Piece
 
-This project comes with a [basic invoice model setup](link me), but it's incomplete. We want you to build out the model for an invoice as well as the invoice items (line items) in an invoice. (TODO: add note that they can use our billing page for the models). Then, we want you to show us how you would sync invoices to Stripe.
+This project comes with a [basic invoice model setup](link me), but it's incomplete.
+We want you to build out the model for an invoice as well as the invoice items (line items) in an invoice.
+(TODO: add note that they can use our billing page for the models).
+Then, we want you to show us how you would sync invoices to Stripe.
 
-You don't have to write to the actual [Stripe API](https://stripe.com/docs/api), but we want to see how that would work. This is important data, so we care about reliabily syncing things and data integrity.
+We don't want you to write to the actual Stripe API!
+We wrote a lib, that you can find in `lib/` that mimics Stripe's Ruby library.
+There is a Markdown file that should explain what you have to work with, but feel free to dig around the code.
+You do not have to use this lib, you can write comments if that's less confusing.
+This lib is there for to help you, give you ideas, and prevent you from wasting a bunch of time learning the Stripe API or their Ruby library.
+More than the usage of the Stripe API, we're interested in how you handle the error cases, retries.
 
 ### Criteria
 
