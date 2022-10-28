@@ -15,7 +15,7 @@ We care about the APIs, interfaces that touch the APIs, and the data we store to
 
 One core piece to that layer is `web`, a lovely Rails app that:
 
-* Syncs usage data from the Fly.io platform so we can give developers insight into their platform usage. This is stuff like reserved CPU, memory usage over time, data in/out, and more. 
+* Syncs usage data from the Fly.io platform so we can give developers insight into their platform usage. This is stuff like reserved CPU, memory usage over time, data in/out, and more.
 * Serves the GraphQL API that powers `flyctl`, the command line tool developers use to interact with the platform.
 * Models our global account data with concepts like `Organizations` and `Users`.
 * Syncs data to Stripe, our payment processor, so we can bill developers for their usage.
@@ -34,6 +34,7 @@ This project comes with a [basic Invoice model setup](link me), but it's incompl
 
 * How did you model money between Invoices, items
 * Do the Rails relationships make sense
+* Are there reasonable database indexes?
 * Since we don't have a presentation layer for this, illustrate your model tests
   - What's the total for an invoice?
 
