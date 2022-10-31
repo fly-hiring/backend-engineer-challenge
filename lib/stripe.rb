@@ -1,5 +1,12 @@
 module Stripe
-  InvalidRequestError = Class.new(StandardError)
+  StripeError = Class.new(StandardError)
+  APIError = Class.new(StripeError)
+  OAuthError = Class.new(StripeError)
+  AuthenticationError = Class.new(StripeError)
+  APIConnectionError = Class.new(StripeError)
+  RateLimitError = Class.new(StripeError)
+  TimeoutError = Class.new(StripeError)
+  InvalidRequestError = Class.new(StripeError)
 
   module Harness
     module ClassMethods
