@@ -42,7 +42,7 @@ The details of the lib are documented in [STRIPE-README.md](lib/STRIPE-README.md
 
 ## Criteria
 
-For the invoice modeling piece, we want to see you choose a good database type for the job (you can document your decision in `NOTES.md`) and model items in a way that emphasizes the things our users care about.
+For the invoice modeling piece, we care about the types you choose and whether you model items in a way that emphasizes the things our users care about.
 We want to see how you approached trade-offs and what you prioritize when making decisions for the migration.
 
 For the Stripe sync, we want to see how you'd build resiliency to API errors, handle retries, and overall do the right thing when things go wrong.
@@ -51,7 +51,6 @@ do what works for your mental model.
 
 Don’t spend time making this perfect or writing tests for every scenario.
 Rough edges are fine if it helps you move quickly, and you can document your decisions and trade-offs in `NOTES.md`.
-Specific things we're looking for:
 
 ## NOTES.md
 
