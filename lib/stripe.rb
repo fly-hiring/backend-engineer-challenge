@@ -49,7 +49,7 @@ module Stripe
         check_slow!
 
         if @retrieve_params.try(:length).to_i > 0
-          new({id:}.merge(@retrieve_params.last))
+          new({id: id}.merge(@retrieve_params.last))
         else
           raise Stripe::InvalidRequestError, "No such invoice: '#{id}'"
         end
