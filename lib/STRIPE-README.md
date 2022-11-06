@@ -28,7 +28,7 @@ Stripe::Invoice.slow_with(10)
   Stripe::Invoice.retrieve("asdf") # waits 10 seconds
 end
 
-Stripe::Invoice.error_with(new StandardError("broken")) do
+Stripe::Invoice.error_with(StandardError.new("broken")) do
   Stripe::Invoice.retrieve("asdf")
   # => StandardError("broken")
 
