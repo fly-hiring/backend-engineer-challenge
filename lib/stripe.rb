@@ -79,7 +79,8 @@ module Stripe
     attr_reader :customer
 
     def initialize(params)
-      @id = params[:id]
+      @id = params[:id] || id
+      assign_attributes(params)
     end
 
     def id
@@ -105,7 +106,7 @@ module Stripe
     attr_reader :quantity
 
     def initialize(params)
-      @id = params[:id]
+      @id = params[:id] || id
       assign_attributes(params)
     end
 
