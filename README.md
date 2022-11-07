@@ -1,11 +1,11 @@
 # Backend Work Sample
 
-Hello! This is a hiring project for our [Backend Engineer position](TODO).
+Hello! This is a hiring project for our [Backend Engineer position](https://fly.io/jobs/backend-engineer/).
 If you apply, we’ll ask you to do this project so we can see how you work through a contrived (yet shockingly accurate) example of the type of things you’d do at Fly.io.
 
 # The Job
 
-As a Backend Engineer at Fly.io, you’ll be working on the interfaces around our platform product. Checkout the [job post](TODO) for the nitty gritty.
+As a Backend Engineer at Fly.io, you’ll be working on the interfaces around our platform product. Checkout the [job post](https://fly.io/jobs/backend-engineer/) for the nitty gritty.
 
 # The Project
 
