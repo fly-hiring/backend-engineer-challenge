@@ -30,9 +30,7 @@ In this project, you're going to build part of this new invoicing system.
 ## What We Want You to Do
 
 This project comes with a basic [invoice model](app/models/invoice.rb) and [migration](db/migrate/20221027223051_create_invoices.rb), but it's incomplete.
-We want you to build the remaining pieces of the invoice model (if anything is missing) as well as the invoice items (line items).
-Don't worry about getting the underlying usage and pricing right -
-if you need inspiration, you can work off the [Fly.io pricing page](https://fly.io/docs/about/pricing/), but your best guess is fine.
+We want you to build the remaining pieces of the invoice model (if anything is missing) as well as the invoice items (line items). Don't worry about modeling usage or pricing, just focus on invoices.
 
 Once you have the models worked out, we want you to show us how you would sync invoices to Stripe.
 **We don't want you to write to the actual Stripe API!**
