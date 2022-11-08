@@ -55,6 +55,8 @@ We want to see how you approached trade-offs and what you prioritize when making
 For the Stripe sync, we want to see how you'd build resiliency to API errors, handle retries, and overall do the right thing when things go wrong.
 The sync logic could be a rake task, a service class, a method/callback on a model; do what works for your mental model.
 
+Also, avoid double billing. Stripe sync will go wrong. Make sure your Stripe sync can't create duplicate charges, even when the internet fails us.
+
 We care a lot about scope. You might be tempted to try and solve the whole big problem, but that's not what we want for this exercise.
 We're asking for relatively focused work. When in doubt, go deeper before you go broader. Blowing out the scope is risky (this is true for people who work here, too).
 
