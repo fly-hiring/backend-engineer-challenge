@@ -7,11 +7,12 @@ If you apply, we’ll ask you to do this project so we can see how you work thro
 
 As a Backend Engineer at Fly.io, you’ll be working on the interfaces around our platform product. Checkout the [job post](https://fly.io/jobs/backend-engineer/) for the nitty gritty.
 
-# The Project
+# Background Information
 
 At the center of our backend infrastructure is `web`, a lovely Rails app that:
 
-* Syncs usage data from the Fly.io platform so we can give developers insight into their platform usage. This is stuff like reserved CPU, memory usage over time, data in/out, and more.
+* Handles billing for a bunch of different things. Invoices are a combination of metered product usage, one off line items, and recurring subscription fees.
+* Generates 10s of thousands of invoices each month.
 * Models our global account data with concepts like `Organizations` and `Users`.
 * Syncs data to Stripe, our payment processor, so we can bill developers for their usage.
 * Serves the GraphQL API that powers `flyctl`, the command line tool developers use to interact with the platform (you don't need to know this for the work sample, but it's kinda cool).
@@ -26,7 +27,7 @@ Once an invoice is generated, we can sync the invoice, rather than the usage, to
 
 In this project, you're going to build part of this new invoicing system.
 
-## Your Work
+## What We Want You to Do
 
 This project comes with a basic [invoice model](app/models/invoice.rb) and [migration](db/migrate/20221027223051_create_invoices.rb), but it's incomplete.
 We want you to build the remaining pieces of the invoice model (if anything is missing) as well as the invoice items (line items).
@@ -40,17 +41,26 @@ You can explain how you'd do this in the comments, _or_ you can write to the moc
 This lib is there for to help you, give you ideas, and prevent you from wasting time learning the Stripe API or their Ruby library.
 The details of the lib are documented in [STRIPE-README.md](lib/STRIPE-README.md).
 
-## Criteria
+We also want to see you query + aggregate invoices. Add a method to the `Invoice` model that summarizes invoice totals by month for multiple years.
+Think hard about how many invoices we're dealing with. We want this method to be fast.
+
+## What We're Looking For
+
+We want you to show us two things:
+
+1. You can build a database backed Rails to implement real life billing
+1. You can solve problems for real life users. See `NOTES.md` down below
 
 For the invoice modeling piece, we care about the types you choose and whether you model items in a way that emphasizes the things our users care about.
 We want to see how you approached trade-offs and what you prioritize when making decisions for the migration.
 
 For the Stripe sync, we want to see how you'd build resiliency to API errors, handle retries, and overall do the right thing when things go wrong.
-The sync logic could be a rake task, a service class, a method/callback on a model;
-do what works for your mental model.
+The sync logic could be a rake task, a service class, a method/callback on a model; do what works for your mental model.
 
-Don’t spend time making this perfect or writing tests for every scenario.
-Rough edges are fine if it helps you move quickly, and you can document your decisions and trade-offs in `NOTES.md`.
+We care a lot about scope. You might be tempted to try and solve the whole big problem, but that's not what we want for this exercise.
+We're asking for relatively focused work. When in doubt, go deeper before you go broader. Blowing out the scope is risky (this is true for people who work here, too).
+
+Pro tip: "Background Information" is just that. We want you to understand the problem. We're not asking you to do extra work.
 
 ## NOTES.md
 
@@ -65,3 +75,15 @@ Here's some examples of things to include in your notes file:
 * How would you run the Stripe sync in production? How do we maintain confidence that this sync continues to work?
 * How would you communicate errors and problems to the user?
 * Any other comments, questions, or thoughts that came up.
+
+## Don't Do These
+
+There's a lot of extra work you'd do in real life that we don't need to see here. Feel free to skip these things:
+
+1. Don't spend time making this perfect or writing tests for every scenario.
+2. Don't solve every edge case. Rough edges are fine if it helps you move quickly, and you can document your decisions and trade-offs in `NOTES.md`.
+3. In real life, there's probably a lot more database schema. Don't worry about real life, just worry about what we're asking for.
+4. Skip quality of life improvements. We're wary of code coverage tools, refactors, testing library changes, etc. We definitely don't want you to spend time on that stuff.
+
+And last, if you know what you're doing, don't spend more than two hours on this. If you are learning, take all the time you need.
+But if you're experienced with Rails and databases and and data consistency issues, this should be a quick project. 
