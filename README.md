@@ -47,7 +47,7 @@ Think hard about how many invoices we're dealing with. We want this method to be
 We want you to show us two things:
 
 1. You can build a database backed Rails to implement real life billing
-1. You can solve problems for real life users. See `NOTES.md` down below
+2. You can solve problems for real life users. See `NOTES.md` down below
 
 For the invoice modeling piece, we care about the types you choose and whether you model items in a way that emphasizes the things our users care about.
 We want to see how you approached trade-offs and what you prioritize when making decisions for the migration.
