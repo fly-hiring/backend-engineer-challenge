@@ -35,7 +35,7 @@ We want you to build the remaining pieces of the invoice model (if anything is m
 Once you have the models worked out, we want you to show us how you would sync invoices to Stripe.
 **We don't want you to write to the actual Stripe API!**
 Instead, we're interested in how you approach building this sync in a resilient, reliable way.
-You can explain how you'd do this in the comments, _or_ you can write to the mock Stripe [library](lib/stripe.rb) included in the project.
+You should write to the mock Stripe [library](lib/stripe.rb) included in the project.
 This lib is there for to help you, give you ideas, and prevent you from wasting time learning the Stripe API or their Ruby library.
 The details of the lib are documented in [STRIPE-README.md](lib/STRIPE-README.md).
 
