@@ -29,8 +29,11 @@ In this project, you're going to build part of this new invoicing system.
 
 ## What We Want You to Do
 
-This project comes with a basic [invoice model](app/models/invoice.rb) and [migration](db/migrate/20221027223051_create_invoices.rb), but it's incomplete.
-We want you to build the remaining pieces of the invoice model (if anything is missing) as well as the invoice items (line items). Don't worry about modeling usage or pricing, just focus on invoices.
+Write some code, and write some notes for us.
+
+This project comes with a basic [invoice model](app/models/invoice.rb) and [migration](db/migrate/20221027223051_create_invoices.rb), but the data model is incomplete.
+We want you to build the remaining pieces of the invoice model (if anything is missing) as well as the invoice items (or line items).
+Don't worry about modeling usage or pricing, just focus on invoices.
 
 Once you have the models worked out, we want you to show us how you would sync invoices to Stripe.
 **We don't want you to write to the actual Stripe API!**
@@ -39,8 +42,27 @@ You should write to the mock Stripe [library](lib/stripe.rb) included in the pro
 This lib is there for to help you, give you ideas, and prevent you from wasting time learning the Stripe API or their Ruby library.
 The details of the lib are documented in [STRIPE-README.md](lib/STRIPE-README.md).
 
-We also want to see you query + aggregate invoices. Add a method to the `Invoice` model that summarizes invoice totals by month for multiple years.
-Think hard about how many invoices we're dealing with. We want this method to be fast.
+We also want to see you query + aggregate invoices.
+Add a method to the `Invoice` model that summarizes invoice totals by month for multiple years.
+Think hard about how many invoices we're dealing with.
+We want this method to be fast.
+
+Finally, we really want to hear your thoughts on solving customer problems.
+Make sure to check out the NOTES.md section below for more details.
+
+## NOTES.md
+
+`NOTES.md` is a place for you to show us how you think about the problem and what you'd be thinking about if you were in charge of this feature at Fly.io.
+Even though this project does not have a UI component, we're **especially** interested in how you think the billing experience should work for developers using Fly.io.
+We want to see you approach the exercise in a way that prioritizes the needs of our users.
+
+Here are some examples of things we love reading in peoples' `NOTES.md` files:
+
+* What big customer-facing ideas would you focus on to improve their experience around usage and billing?
+* How would you run the Stripe sync in production? How do we maintain confidence that this sync continues to work?
+* How would you communicate errors and problems to the user?
+* What columns could you add to the invoice/invoice item models that you think our users would find helpful?
+* Any other comments, questions, or thoughts that came up.
 
 ## What We're Looking For
 
@@ -55,26 +77,22 @@ We want to see how you approached trade-offs and what you prioritize when making
 For the Stripe sync, we want to see how you'd build resiliency to API errors, handle retries, and overall do the right thing when things go wrong.
 The sync logic could be a rake task, a service class, a method/callback on a model; do what works for your mental model.
 
-Also, avoid double billing. Stripe sync will go wrong. Make sure your Stripe sync can't create duplicate charges, even when the internet fails us.
+Also, avoid double billing.
+Stripe sync will go wrong.
+Make sure your Stripe sync can't create duplicate charges, even when the internet fails us.
 
-We care a lot about scope. You might be tempted to try and solve the whole big problem, but that's not what we want for this exercise.
-We're asking for relatively focused work. When in doubt, go deeper before you go broader. Blowing out the scope is risky (this is true for people who work here, too).
+We care a lot about scope.
+You might be tempted to try and solve the whole big problem, but that's not what we want for this exercise.
+We're asking for relatively focused work.
+When in doubt, go deeper before you go broader.
+Blowing out scope is risky (this is true for people who work here, too).
 
-Pro tip: "Background Information" is just that. We want you to understand the problem. We're not asking you to do extra work.
+Pro tip: "Background Information" is just that. We want you to understand the problem.
+We're not asking you to do extra work.
 
-## NOTES.md
-
-`NOTES.md` is here for _you_ to show us how you think about the problem and what you'd be thinking about if you were in charge of this feature at Fly.io.
-Even though this project does not have a UI component, we're especially interested in how you think the billing experience should work for developers, and how you'd bubble up problems to users when things are _not_ working as they should.
-We want to see you approach the exercise in a way that prioritizes the needs of our users.
-
-Here's some examples of things to include in your notes file:
-
-* What would you focus on to improve the experience around usage and billing?
-* What columns could you add to the invoice/invoice item models that you think our users would find helpful?
-* How would you run the Stripe sync in production? How do we maintain confidence that this sync continues to work?
-* How would you communicate errors and problems to the user?
-* Any other comments, questions, or thoughts that came up.
+Last, we're looking for user-focus thought.
+A lot of what you do in code can illustrate this, but this is also why we have the Notes section.
+Talk about the types of problems our users would care about and maybe how you'd imagine solving them.
 
 ## Don't Do These
 
@@ -85,5 +103,6 @@ There's a lot of extra work you'd do in real life that we don't need to see here
 3. In real life, there's probably a lot more database schema. Don't worry about real life, just worry about what we're asking for.
 4. Skip quality of life improvements. We're wary of code coverage tools, refactors, testing library changes, etc. We definitely don't want you to spend time on that stuff.
 
-And last, if you know what you're doing, don't spend more than two hours on this. If you are learning, take all the time you need.
-But if you're experienced with Rails and databases and and data consistency issues, this should be a quick project. 
+And last, if you know what you're doing, don't spend more than two hours on this.
+If you are learning, take all the time you need.
+But if you're experienced with Rails, databases, and data consistency issues, this should be a quick project.
