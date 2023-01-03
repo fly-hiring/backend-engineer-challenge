@@ -16,7 +16,7 @@ module Stripe
         @errors << error
         yield
       ensure
-        @errors.pop if len > @errors.try(:length).to_i
+        @errors.pop if @errors.try(:length).to_i > len
       end
 
       def slow_with(time_seconds)
@@ -25,7 +25,7 @@ module Stripe
         @slow_times << time_seconds
         yield
       ensure
-        @slow_times.pop if len > @slow_times.try(:length).to_i
+        @slow_times.pop if @slow_times.try(:length).to_i > len
       end
 
       def retrieve_with(params)
@@ -80,6 +80,7 @@ module Stripe
 
     def initialize(params)
       @id = params[:id]
+      assign_attributes(params)
     end
 
     def id
@@ -90,9 +91,6 @@ module Stripe
 
     def assign_attributes(params)
       @customer = params[:customer]
-      @invoice = params[:invoice]
-      @unit_amount_decimal = params[:unit_amount_decimal]
-      @quantity = params[:quantity]
     end
   end
 

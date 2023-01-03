@@ -24,15 +24,20 @@ end
 Stripe::Invoice.retrieve("asdf")
 # => InvalidRequestError (because it couldn't "find" anything)
 
-Stripe::Invoice.slow_with(10)
+Stripe::Invoice.slow_with(10) do
   Stripe::Invoice.retrieve("asdf") # waits 10 seconds
 end
 
-Stripe::Invoice.error_with(new StandardError("broken")) do
+Stripe::Invoice.error_with(StandardError.new("broken")) do
   Stripe::Invoice.retrieve("asdf")
   # => StandardError("broken")
 
   Stripe::Invoice.retrieve("asdf")
   # => StandardError("broken")
 end
+
+# slow and error blocks above also work with update_attributes and invoice items:
+invoice_item.update_attributes(quantity: 10)
+
+# see lib/stripe.rb for more information
 ```
